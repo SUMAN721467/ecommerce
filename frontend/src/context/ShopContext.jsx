@@ -5,7 +5,7 @@ export const ShopContext = createContext();
 
 const ShopContextProvider = (props) => {
 
-    const currency = '$';
+    const currency = '₹';
     const delivery_fee = 10;
     
     const [search,setSearch] = useState('');
@@ -67,10 +67,14 @@ const ShopContextProvider = (props) => {
         return totalAmount;
     }
 
+    const [token, setToken] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : '');
+    const backendUrl = "http://localhost:4000";
+
     const value = {
         products, currency , delivery_fee, 
         search, setSearch, showSearch, setShowSearch,
-        cartItems, addToCart, getCartCount, updateQuantity, getCartAmount
+        cartItems, addToCart, getCartCount, updateQuantity, getCartAmount,
+        backendUrl, token, setToken
     }
 
     return (
